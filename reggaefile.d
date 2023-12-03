@@ -3,7 +3,7 @@ import reggae.path;
 
 Build reggaeBuild() {
    import std.process: environment;
-   //enum simple = buildPath("/home/o3o", ".dub", "packages",  "/simple-math/1.1.0/simple-math/source");
+   //enum simple = buildPath("/home/o3o", ".dub", "packages",  "simple-math/1.1.0/simple-math/source");
 
    string simple = buildPath(dubPackagesDir, "/simple-math/1.1.0/simple-math/source");
    auto app = scriptlike!(
@@ -12,8 +12,7 @@ Build reggaeBuild() {
             BinaryFileName(`math`)
             ),
          Flags(),
-         ImportPaths([`../animal/src`, simple])
-         //, () => Target(`../animal/build/libanimal.a`)
+         ImportPaths([simple])
          );
    return Build(app);
 }
